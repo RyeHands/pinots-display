@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Welcome</title>
+    <link rel="stylesheet" href="style.css">
+    <style id="dynamic-styles">
+        /* Dynamic styles will be injected here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1 id="painting-title" class="painting-title"></h1>
+            <p class="info"><span class="label">Artist...</span> <span id="artist-name" class="artist"></span></p>
+            <p class="info" id="bartender-container">
+                <span class="label">Bartender...</span> 
+                <span id="bartender-name" class="bartender"></span>
+            </p>
+        </div>
+        <div class="right-panel">
+            <img src="" alt="Painting Image" class="painting-image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-bar">
+        <div class="footer-left">
+    	   <img src="logo.svg" id="logo" alt="Logo" />
+           <div class="vl"></div>
+           <span id="room">South Hill, Puyallup</span>
+        </div>
+        <div class="footer-right">
+            <p><span id="current-time"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

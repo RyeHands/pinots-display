@@ -1,0 +1,20 @@
+{
+    "painting_name": "Give a Dog a Bone",
+    "artist_name": "Sped Head Sawyer",
+    "bartender_enabled": true,
+    "bartender_name": "idiot mcgee",
+    "painting_source": "https://paintings.pinotspalette.com/give-a-dog-a-bone-tv.jpg",
+    "fonts": {
+        "artist_font": "Borel",
+        "bartender_font": "Chewy",
+        "painting_font": "Slabo 27px"
+    },
+    "colors": {
+        "title_color": "#00ff40",
+        "label_color": "#8000ff",
+        "artist_color": "#ff8040",
+        "bartender_color": "#400000",
+        "background_color": "#000000",
+        "panel_background": "#00ffff"
+    }
+}

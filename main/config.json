@@ -1,0 +1,21 @@
+{
+    "painting_name": "Galaxy Beach",
+    "artist_name": "Ryden Handsaker",
+    "bartender_enabled": true,
+    "bartender_name": "Laurel Monson",
+    "painting_source": "https://paintings.pinotspalette.com/galaxy-beach-tv.jpeg",
+    "fonts": {
+        "artist_font": "Bangers",
+        "bartender_font": "Chewy",
+        "painting_font": "Barriecito"
+    },
+    "colors": {
+        "text_color": "#222222",
+        "title_color": "#FFFF00",
+        "label_color": "#5555DD",
+        "artist_color": "#0000FF",
+        "bartender_color": "#00FF00",
+        "background_color": "#e7e7ed",
+        "panel_background": "#0094cc"
+    }
+}
