@@ -112,7 +112,7 @@ def main():
             sys.exit()
 
         else:
-            print("[Updater] App is up to date.")
+            print(f"[Updater] App is up to date. ({current_version})")
 
     except Exception as e:
         print(f"[Updater] Update check failed: {e}")
