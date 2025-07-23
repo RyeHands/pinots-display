@@ -12,5 +12,6 @@ def launch_main_app():
     subprocess.run(["python", "web.py"])
 
 if __name__ == "__main__":
+    print("Update Test!!")
     run_updater_if_present()
     launch_main_app()
