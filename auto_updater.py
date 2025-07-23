@@ -59,6 +59,12 @@ os.remove(os.path.join(old_dir, 'updater.py'))
 
 # Relaunch app
 subprocess.Popen([sys.executable, 'launcher.py'])
+
+# Remove update flag
+try:
+    os.remove(os.path.join(old_dir, 'update_in_progress.flag'))
+except FileNotFoundError:
+    pass
 """
     with open("updater.py", "w") as f:
         f.write(code.strip())
@@ -98,6 +104,10 @@ def main():
             write_updater_script(os.getcwd(), extracted_dir)
 
             print("[Updater] Launching updater...")
+            # Signal that the updater will relaunch the app
+            with open("update_in_progress.flag", "w") as f:
+                f.write("1")
+                
             subprocess.Popen([sys.executable, "updater.py"])
             sys.exit()
 
