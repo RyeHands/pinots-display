@@ -4,6 +4,7 @@ import zipfile
 import os
 import shutil
 import sys
+import subprocess
 
 def get_latest_release_info():
     url = f"https://api.github.com/repos/RyeHands/pinots-display/releases/latest"
@@ -95,7 +96,8 @@ def main():
             print("[Updater] Preparing updater script...")
             write_updater_script(os.getcwd(), extracted_dir)
 
-            print("[Updater] Update prepared. Please restart the app.")
+            print("[Updater] Launching updater...")
+            subprocess.Popen([sys.executable, "updater.py"])
             sys.exit()
 
         else:
