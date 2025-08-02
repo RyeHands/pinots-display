@@ -7,7 +7,7 @@ import sys
 import subprocess
 
 def get_latest_release_info():
-    url = f"https://api.github.com/repos/RyeHands/pinots-display/releases/latest"
+    url = "https://api.github.com/repos/RyeHands/pinots-display/releases/latest"
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read())
         return data['tag_name'], data['zipball_url']
@@ -48,9 +48,9 @@ if os.path.exists(room_txt):
     backup_room_txt = os.path.join(old_dir, 'room.txt.bak')
     shutil.copy2(room_txt, backup_room_txt)
 
-# Delete all files and folders in old_dir except updater.py, temp_update, and room.txt.bak
+# Delete all files and folders in old_dir except updater.py, temp_update, room.txt.bak, and .git
 for item in os.listdir(old_dir):
-    if item not in ['updater.py', 'temp_update', 'room.txt.bak']:
+    if item not in ['updater.py', 'temp_update', 'room.txt.bak', '.git']:
         path = os.path.join(old_dir, item)
         if os.path.isdir(path):
             shutil.rmtree(path)
@@ -133,3 +133,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
