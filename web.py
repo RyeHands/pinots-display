@@ -8,7 +8,6 @@ PORT = 8000
 class DirectoryListingHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
-            # Generate a simple HTML page with buttons for directories
             script_dir = os.path.dirname(os.path.abspath(__file__))
             dirs = [
                 name for name in os.listdir(script_dir)
@@ -60,7 +59,6 @@ class DirectoryListingHandler(http.server.SimpleHTTPRequestHandler):
             """
 
             for d in dirs:
-                # Button opens directory URL
                 html += f'<button onclick="location.href=\'/{d}/\'">{d}</button>\n'
 
             html += """
@@ -71,7 +69,6 @@ class DirectoryListingHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(html.encode('utf-8'))
 
         else:
-            # Fallback to default handler for other paths/files
             super().do_GET()
 
 import socket
@@ -82,9 +79,9 @@ def is_port_in_use(port, host='127.0.0.1'):
         try:
             s.bind((host, port))
             s.listen(1)
-            return False  # Port is free
+            return False
         except OSError:
-            return True  # Port is in use
+            return True
 
 if is_port_in_use(PORT):
     print(f"[ERROR] Another instance is already running on port {PORT}.")

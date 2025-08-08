@@ -7,7 +7,7 @@ import sys
 import subprocess
 
 def get_latest_release_info():
-    url = "https://api.github.com/repos/RyeHands/pinots-display/releases/latest"
+    url = f"https://api.github.com/repos/RyeHands/pinots-display/releases/latest"
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read())
         return data['tag_name'], data['zipball_url']
@@ -41,40 +41,32 @@ def copytree(src, dst):
 
 time.sleep(1)
 
-# Backup room.txt if it exists
 room_txt = os.path.join(old_dir, 'room.txt')
 backup_room_txt = None
 if os.path.exists(room_txt):
     backup_room_txt = os.path.join(old_dir, 'room.txt.bak')
     shutil.copy2(room_txt, backup_room_txt)
 
-# Delete all files and folders in old_dir except updater.py, temp_update, room.txt.bak, and .git
 for item in os.listdir(old_dir):
-    if item not in ['updater.py', 'temp_update', 'room.txt.bak', '.git']:
+    if item not in ['updater.py', 'temp_update', 'room.txt.bak']:
         path = os.path.join(old_dir, item)
         if os.path.isdir(path):
             shutil.rmtree(path)
         else:
             os.remove(path)
 
-# Move new files in place
 copytree(new_dir, old_dir)
 
-# Restore room.txt if it was backed up
 if backup_room_txt and os.path.exists(backup_room_txt):
     shutil.move(backup_room_txt, room_txt)
 else:
-    # No local room.txt before, keep the room.txt from repo (if it exists)
     pass
 
-# Cleanup
 shutil.rmtree(os.path.join(old_dir, 'temp_update'))
 os.remove(os.path.join(old_dir, 'updater.py'))
 
-# Relaunch app
 subprocess.Popen([sys.executable, 'launcher.py'])
 
-# Remove update flag
 try:
     os.remove(os.path.join(old_dir, 'update_in_progress.flag'))
 except FileNotFoundError:
@@ -109,7 +101,6 @@ def main():
             extract_zip(zip_name, temp_dir)
             os.remove(zip_name)
 
-            # GitHub source zip includes a folder inside temp_update
             extracted_dir = next(os.path.join(temp_dir, d)
                                  for d in os.listdir(temp_dir)
                                  if os.path.isdir(os.path.join(temp_dir, d)))
@@ -133,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -8,7 +8,6 @@ def run_updater_if_present():
         subprocess.run(["python", "auto_updater.py"])
         print("[Launcher] Updater finished.")
 
-    # If an update is in progress, don't run the app
     if os.path.exists("update_in_progress.flag"):
         print("[Launcher] Update is in progress. Exiting launcher.")
         sys.exit(0)
@@ -33,6 +32,6 @@ def ensure_installed(module_name, package_name=None):
 
 if __name__ == "__main__":
     ensure_installed("PIL", "Pillow")
-    ensure_installed("tkinterdnd2")  # package name same as module
+    ensure_installed("tkinterdnd2")
     run_updater_if_present()
     launch_main_app()
